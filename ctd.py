@@ -66,12 +66,12 @@ while True:
     right_ssim = calculate_ssim(right_strip, current_right_strip)
     
     # Define a threshold for SSIM difference to detect tampering
-    ssim_threshold = 0.7  # Adjust this threshold based on your use case
+    ssim_threshold = 0.9 # Adjust this threshold based on your use case
     # Draw the resolution text on the frame
     # cv2.putText(current_frame, resolution_text, (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
     
     # Check if any boundary strip shows significant change
-    if top_ssim < ssim_threshold or bottom_ssim < ssim_threshold or left_ssim < ssim_threshold or right_ssim < ssim_threshold:
+    if top_ssim < ssim_threshold and bottom_ssim < ssim_threshold and left_ssim < ssim_threshold and right_ssim < ssim_threshold:
         print("Warning: Camera tampering detected!")
         cv2.putText(current_frame, "Camera Tampering Detected!", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
     
